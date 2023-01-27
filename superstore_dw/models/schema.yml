@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: norm
+    database: postgres
+    schema: norm
+    tables:
+     - name: t_segment
+
+models:
+  - name: stg_t_segment
+    columns:
+      - name: segment_id
+        description: "A unique identifier for the segment of the customer"
+        tests:
+          - unique
+          - not_null
+      - name: segment
+        description: "The name of the segment"
