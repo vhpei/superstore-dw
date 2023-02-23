@@ -2,21 +2,193 @@ version: 2
 
 sources:
   - name: norm
-    database: group3
+    database: group4
     schema: norm
     tables:
      - name: t_employee
      - name: t_region
+     - name: t_city
+     - name: t_category
+     - name: t_country
+     - name: t_customer
+     - name: t_order
+     - name: t_order_line
+     - name: t_postal_code
+     - name: t_product
+     - name: t_return
+     - name: t_segment
+     - name: t_ship_mode
+     - name: t_shipment
+     - name: t_state
+     - name: t_stock_movement
+  - name: dw
+    database: group4
+    schema: dw
+    tables:
+     - name: dim_customer
+     - name: dim_geography
+     - name: dim_date
+     - name: dim_employee
+
+ 
 
 models:
-  - name: stg_employee
+#  - name: stg_employee
+#    columns:
+#      - name: employee_id
+#        description: "A unique identifier for the employee"
+#        tests:
+#          - unique
+#          - not_null
+#      - name: employee_name
+#        description: "The name of the employee"
+#      - name: region
+#        description: "The region this employee is responsible for"
+  - name: dim_costumer
     columns:
-      - name: employee_id
-        description: "A unique identifier for the employee"
+      - name: sk_customer
+        description: "The primary key of this table"
         tests:
           - unique
           - not_null
+      - name: customer_id
+        description: "A unique identifier of the customer"
+#        tests:
+#          - unique
+#          - not_null
+      - name: customer_name
+        description: "The name of the customer"
+      - name: segment
+        description: "Defines the type of customer"
+#        tests:
+#          - accepted_values:
+#              values: ['Consumer', 'Corporate', 'Home Office',]
+#      - name: valid_from
+#      - name: valid_to
+      - name: created_at
+#      - name: last_updated_at
+  - name: dim_geography
+    columns:
+      - name: sk_geography
+        description: "The primary key of this table"
+        tests:
+          - unique
+          - not_null
+      - name: city
+        description: "The name of the city"
+      - name: state
+        description: "The name of the state"
+      - name: region
+        description: "The name of the region"
+      - name: country
+        description: "The name of the country"
+#      - name: valid_from
+#      - name: valid_to
+      - name: created_at
+#      - name: last_updated_at
+  - name: dim_employee
+    columns:
+      - name: sk_employee
+        description: "The primary key of this table"
+        tests:
+          - unique
+          - not_null
+      - name: employee_id 
+        description: "A unique identifier for the employee"
       - name: employee_name
         description: "The name of the employee"
-      - name: region
-        description: "The region this employee is responsible for"
+#      - name: valid_from
+#      - name: valid_to
+      - name: created_at
+#      - name: last_updated_at
+  - name: dim_date
+    columns:
+      - name: sk_date
+        description: "The primary key of this table"
+        tests:
+          - unique
+          - not_null
+      - name: date
+        descriprion: "The date"
+      - name: day
+        description: "The respective day from the date"
+      - name: month
+        description: "The respective month from the date"
+#        tests:
+#          - accepted_values:
+#              values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      - name: year
+        description: "The respective year from the date"
+      - name: month_name
+        description: "The name of the month from the date"
+#        tests:
+#          - accepted_values:
+#              values: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      - name: month_name_short
+        description: "The short version of the name of the month from the date"
+#        tests:
+#          - accepted_values:
+#              values: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      - name: week_number
+        description: "The number of the week from the date"
+#        tests:
+#          - accepted_values:
+#              values: [1:52]
+      - name: day_of_week
+        description: "The day of the week from the date"
+#        tests:
+#          - accepted_values:
+#              values: [0, 1, 2, 3, 4, 5, 6]
+      - name: day_of_week_name
+        description: "The name of the day of the week from the date"
+#        tests:
+#          - accepted_values:
+#              values: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      - name: quarter
+        description: "The quarter of the year from the date"
+#        tests:
+#          - accepted_values:
+#              values: [1, 2, 3, 4]
+      - name: is_weekend
+        description: "Boolean to check if it is weekend from date"
+#        tests:
+#          - accepted_values:
+#              values: ['True', 'False']
+  - name: fact_order
+    columns: 
+      - name: order_id
+        description: 'A unique identidier for the order'
+#        test:
+#          - not_null
+#          - unique
+      - name: sk_order_date
+        description: 'The date when the item was ordered'
+      - name: sk_shipped_date
+        description: 'The date when the item was shipped'
+      - name: sk_customer
+        description: 'The identifier of the customer'
+      - name: sk_geography
+        description: 'The identifier of the geography'
+      - name: sk_employee
+        description: 'The identifier of the employee'
+      - name: order_satus
+        descriprion: 'The state of the order'
+      - name: ship_mode
+        description: 'The type of shipment of the order'
+      - name: nr_of_order_lines
+        description: 'The number of order lines'
+      - name: quanity
+        description: 'The quantity ordered'
+      - name: time_to_ship_days
+        description: 'The time until shipment'
+      - name: sales
+        description: 'The value of the sales'
+      - name: profit
+        descripion: 'The profit from the order'
+      - name: created_at
+        description: 'The date when de order was created'
+#      - name: last_updated_at
+#        description: 'The date when de order was las updated'
+      
+
+      
