@@ -177,7 +177,7 @@ models:
         description: 'The type of shipment of the order'
       - name: nr_of_order_lines
         description: 'The number of order lines'
-      - name: quanity
+      - name: quantity
         description: 'The quantity ordered'
       - name: time_to_ship_days
         description: 'The time until shipment'
