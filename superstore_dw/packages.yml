@@ -1,14 +1,3 @@
 packages:
   - package: dbt-labs/dbt_utils
     version: 1.0.0
-
-#ver isto do stack overflow
-#{{ config(
-#    materialized = 'table',
-#    indexes=[
-#      {'columns': ['column_a'], 'type': 'hash'},
-#      {'columns': ['column_a', 'column_b'], 'unique': True},
-#    ]
-#)}}
-
-#select ...
