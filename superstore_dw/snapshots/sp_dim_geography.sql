@@ -5,7 +5,7 @@
         target_schema='snapshots',
         unique_key='sk_geography',
         strategy='check',
-        check_cols=['city', 'state','region','country']
+        check_cols=['city', 'state', 'region', 'country']
     )
 }}
 
