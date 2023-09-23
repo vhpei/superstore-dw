@@ -20,7 +20,7 @@ For each dimension table, define what type of SCD (Slowly Changing Dimension) sh
 For this project DBT to set up the Data Warehouse for the Superstore dataset. The following points demonstrate what was done.
 - Using the file [setup.sql](https://github.com/vhpei/superstore-dw/blob/dev/setup.sql) a database with 2 schemas was created in PostgreSQL.
 - With DBT, we defined these schemas as part of our project configuration, and DBT generated SQL statements to create them in our data warehouse.
-- We defined tables representing the Superstore dataset. We have specified the columns for each table and their data types. This step involves defining the structure the data model, which DBT can then translate into SQL statements for creating tables.
+- We defined tables representing the Superstore dataset. We have specified the columns for each table and their data types. This step involved defining the structure of the data model, which DBT can then translate into SQL statements for creating tables.
 - We defined relationships between tables and other configurations using YML files, seeds to generate surrogate keys etc.
 - We wrote SQL queries to transform and clean the data in the tables as needed. These transformations included aggregations, filtering, joining tables, and other operations.
 - We integrated DBT with GitHub, making it easy to collaborate with team members and track changes over time.
